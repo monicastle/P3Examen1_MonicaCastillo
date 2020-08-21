@@ -103,7 +103,6 @@ public:
                 } // Fin If 
             } // Fin If  
         } // Fin For
-        cout << "pig ingresado: " << IP_Binaria_Final << endl;
         // FINAL PING INGRESADO
         //
         // INICIO PING USUARIO
@@ -169,11 +168,10 @@ public:
                 } // Fin If 
             } // Fin If  
         } // Fin For
-        cout << "ping usuario = " << IP_Binaria_Final2 << endl;
-    // FINAL PING USUARIO
-    //
-    //INICIO MASCARA DE RED USUARIO
-    vector<string> mascara_US;
+        // FINAL PING USUARIO
+        //
+        //INICIO MASCARA DE RED USUARIO
+        vector<string> mascara_US;
         int cont3 = 0, num_Masc;
         string acum3 = "";
         for (int i = 0; i < mascara_Usuario.size(); i++){
@@ -235,47 +233,46 @@ public:
                 } // Fin If 
             } // Fin If  
         } // Fin For
-        cout << "Mascara Usuario: " << Mascara_Binaria_Final << endl;    
-    // FINAL MASCARA DE RED USUARIO
-    //
-    // INICIO PROCESO DE COMPARACION
-    int cont_unos = 0;
-    string acumnumeros_IP1, acumnumeros_IP2, final_IP1, final_IP2;
-    for (int i = 0; i < Mascara_Binaria_Final.size(); i++){
-        if (Mascara_Binaria_Final[i] == '1'){
-            cont_unos++;
+        // FINAL MASCARA DE RED USUARIO
+        //
+        // INICIO PROCESO DE COMPARACION
+        int cont_unos = 0;
+        string acumnumeros_IP1, acumnumeros_IP2, final_IP1, final_IP2;
+        for (int i = 0; i < Mascara_Binaria_Final.size(); i++){
+            if (Mascara_Binaria_Final[i] == '1'){
+                cont_unos++;
+            } // Fin If
+        } // Fin For
+        for (int i = 0; i < IP_Binaria_Final.size(); i++){
+            if (IP_Binaria_Final[i] != '.'){
+                acumnumeros_IP1 += IP_Binaria_Final[i];
+            } // Fin If
+        } // Fin For
+        for (int i = 0; i < IP_Binaria_Final2.size(); i++){
+            if (IP_Binaria_Final2[i] != '.'){
+                acumnumeros_IP2 += IP_Binaria_Final2[i];
+            } // Fin If
+        } // Fin For
+        final_IP1 = acumnumeros_IP1.substr(0, cont_unos);
+        final_IP2 = acumnumeros_IP2.substr(0, cont_unos);
+        if (final_IP1 == final_IP2) {
+            cout << endl << "Pinging to " << IP << " with 32 bytes of data:" << endl;
+            cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl; 
+            cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl; 
+            cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl; 
+            cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl << endl;                 
+            cout << endl << "Ping statistics for " << IP << ":" << endl;
+            cout << "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)" << endl << endl;         
+        } else {
+            cout << endl << "Pinging to " << IP << " with 32 bytes of data:" << endl;
+            cout << "Reply from " << IP << ": Destination host unreachable" << endl; 
+            cout << "Reply from " << IP << ": Destination host unreachable" << endl; 
+            cout << "Reply from " << IP << ": Destination host unreachable" << endl; 
+            cout << "Reply from " << IP << ": Destination host unreachable" << endl << endl;                 
+            cout << endl << "Ping statistics for " << IP << ":" << endl;
+            cout << "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)" << endl << endl; 
         } // Fin If
-    } // Fin For
-    for (int i = 0; i < IP_Binaria_Final.size(); i++){
-        if (IP_Binaria_Final[i] != '.'){
-            acumnumeros_IP1 += IP_Binaria_Final[i];
-        } // Fin If
-    } // Fin For
-    for (int i = 0; i < IP_Binaria_Final2; i++){
-        if (IP_Binaria_Final2[i] != '.'){
-            acumnumeros_IP2 += IP_Binaria_Final2[i];
-        } // Fin If
-    } // Fin For
-    final_IP1 = acumnumeros_IP1.substr(0, cont_unos);
-    final_IP2 = acumnumeros_IP2.substr(0, cont_unos);
-    if (final_IP1 == final_IP2) {
-        cout << endl << "Pinging to " << IP << " with 32 bytes of data:" << endl;
-        cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl; 
-        cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl; 
-        cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl; 
-        cout << "Reply from " << IP << ": bytes=32 time=37ms TTL=46" << endl << endl;                 
-        cout << endl << "Ping statistics for " << IP << ":" << endl;
-        cout << "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)" << endl << endl;         
-    } else {
-        cout << endl << "Pinging to " << IP << " with 32 bytes of data:" << endl;
-        cout << "Reply from " << IP << ": Destination host unreachable" << endl; 
-        cout << "Reply from " << IP << ": Destination host unreachable" << endl; 
-        cout << "Reply from " << IP << ": Destination host unreachable" << endl; 
-        cout << "Reply from " << IP << ": Destination host unreachable" << endl << endl;                 
-        cout << endl << "Ping statistics for " << IP << ":" << endl;
-        cout << "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)" << endl << endl; 
-    } // Fin If
-    // FINAL PROCESO DE COMPARACION
+        // FINAL PROCESO DE COMPARACION
     } // Fin Metodo Ping
 
     string toString(){

@@ -18,9 +18,9 @@ int main(){
         switch (opcion){
         case 1: {
             string IP, mascara_red, hostname;
-            cout << "Ingrese la IP:";
+            cout << "Ingrese la IP: ";
             cin >> IP;
-            cout << "Ingrese la Mascara de Red:";
+            cout << "Ingrese la Mascara de Red: ";
             cin >> mascara_red;
             cout << "Ingrese un Hostname: ";
             cin >> hostname;
