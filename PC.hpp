@@ -41,7 +41,7 @@ public:
 
     void Ping(string IP){
         vector<string> numeros_IP;
-        int cont = 0, numID;
+        int cont = 0, numIP;
         string acum = "";
         for (int i = 0; i < IP.size(); i++){
             if (IP[i] == '.'){
@@ -55,28 +55,27 @@ public:
                 } // Fin If             
             } // Fin If     
         } // Fin For
-               cout << "lolis" << endl;
         string IP_Binaria = "";
-        int acum1 = 0, acum2 = 0, digito, residuo;
+        int exp = 0, digito;
+        int binario = 0;
         for (int i = 0; i < 4; i++){
-            numID = stoi(numeros_IP[i]);
-            acum1 = 0;
-            acum2 = 0;
-            while(numID != 0){
-                digito = numID % 10;
-                if (digito == 0 || digito == 1) {
-                    int exp = 0, p = 1;
-                    p = p + digito * (int) pow(2, exp);
-                    exp++;
-                    residuo = numID % 10;
-                    numID = numID / 10;
-                    acum1 = acum1 + p;
-                    acum2 --;
-                } // Fin If
-            } // Fin While 
-            IP_Binaria += acum2 + ".";          
+            numIP = stoi(numeros_IP[i]);
+            while(numIP / 2 != 0){
+                digito = numIP % 2;
+                binario = binario + digito * pow(10.0,exp);
+                exp++;
+                numIP = numIP / 2;
+            } // Fin While
+            binario = binario + numIP * pow(10.0,exp);
+            if (i == 3){
+                IP_Binaria += to_string(binario);               
+            } else {
+                IP_Binaria += to_string(binario) + ".";
+            } // Fin If
+            exp = 0; 
+            binario = 0;       
         } // Fin For
-        cout << IP_Binaria << "IPDOPE";
+        cout << IP_Binaria << endl;
     } // Fin Metodo Ping
 
     string toString(){

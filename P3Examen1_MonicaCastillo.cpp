@@ -52,7 +52,29 @@ int main(){
                 } else if (comando == "exit"){
                     return 0;
                 } else {
-                    pc.Ping(lista_PCs[pos_PC]->GetIP());
+                    string acum_IP = "";
+                    for (int i = 0; i < comando.size(); i++){
+                        if (i > 4){
+                            acum_IP += comando[i];
+                        } // Fin If                       
+                    } // Fin For
+                    bool existeIP = false;
+                    for (int i = 0; i < lista_PCs.size(); i++){
+                        if (lista_PCs[i]->GetIP() == acum_IP){ 
+                            existeIP = true;
+                        } // Fin If                        
+                    } // Fin For
+                    if (existeIP == false){
+                        cout << endl << "Pinging to " << acum_IP << " with 32 bytes of data:" << endl;
+                        cout << "Request timed out." << endl; 
+                        cout << "Request timed out." << endl;
+                        cout << "Request timed out." << endl;   
+                        cout << "Request timed out." << endl;
+                        cout << endl << "Ping statistics for " << acum_IP << ":" << endl;
+                        cout << "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)" << endl << endl;                        
+                    } else {                                               
+                        pc.Ping(acum_IP);
+                    } // Fin If
                 } // Fin If
             } // Fin While Comandos
             break; }
