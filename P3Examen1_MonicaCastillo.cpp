@@ -73,7 +73,7 @@ int main(){
                         cout << endl << "Ping statistics for " << acum_IP << ":" << endl;
                         cout << "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)" << endl << endl;                        
                     } else {                                               
-                        pc.Ping(acum_IP);
+                        pc.Ping(acum_IP, lista_PCs[pos_PC]->GetIP(), lista_PCs[pos_PC]->GetMascaraRed());
                     } // Fin If
                 } // Fin If
             } // Fin While Comandos
